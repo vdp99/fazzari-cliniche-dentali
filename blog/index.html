@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Consigli e approfondimenti dentali | Fazzari Cliniche Dentali Palermo</title>
+  <meta name="description" content="Articoli, consigli e approfondimenti su salute dentale ed estetica del sorriso firmati Fazzari Cliniche Dentali di Palermo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://fazzariclinicheddentali.it/blog/">
+  <link rel="icon" type="image/png" href="../asset/logo/icona.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .blog-hero {
+      background-color: var(--teal-dark);
+      padding: calc(var(--header-height) + 4rem) 0 4rem;
+      text-align: center;
+    }
+    .blog-hero h1 { color: white; margin-bottom: 0.75rem; }
+    .blog-hero p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 480px; margin: 0 auto; }
+
+    .blog-filters {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 2.5rem 0 1rem;
+    }
+    .filter-btn {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.5rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--teal-mid);
+      background: transparent;
+      color: var(--teal-mid);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+      color: white;
+    }
+    .filter-btn.filter-estetica:hover,
+    .filter-btn.filter-estetica.active {
+      background: var(--cipria);
+      border-color: var(--cipria);
+      color: white;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      padding: 1.5rem 0 5rem;
+    }
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    .article-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-mid), box-shadow var(--transition-mid);
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .article-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .article-card-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 0.85rem;
+    }
+    .badge-dentale {
+      background: rgba(14,74,77,0.1);
+      color: var(--teal-dark);
+    }
+    .badge-estetica {
+      background: rgba(196,137,122,0.15);
+      color: var(--cipria);
+    }
+    .article-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .article-card-excerpt {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .article-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #999;
+    }
+    .article-card-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--teal-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition-fast);
+    }
+    .article-card-link:hover { color: var(--teal-dark); }
+
+    .article-card[data-cat="estetica"] .article-card-link { color: var(--cipria); }
+    .article-card[data-cat="estetica"] .article-card-link:hover { color: #a06050; }
+
+    .article-card.hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="header-logo">
+        <a href="../index.html">
+          <img src="../asset/logo/completo.png" alt="Fazzari Cliniche Dentali" height="44">
+        </a>
+      </div>
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a href="../index.html">Home</a>
+        <a href="../chi-siamo.html">Chi Siamo</a>
+        <a href="../servizi.html">Servizi</a>
+        <a href="../estetica.html" class="nav-estetica">Estetica</a>
+        <a href="../team.html">Team</a>
+        <a href="../tecnologia.html">Tecnologia</a>
+        <a href="index.html" class="active">Blog</a>
+        <a href="../contatti.html">Contatti</a>
+      </nav>
+      <div class="header-cta">
+        <a href="../contatti.html" class="btn btn-primary btn-sm">Prenota Visita</a>
+      </div>
+      <button class="hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu-overlay"></div>
+  <nav class="mobile-nav" aria-label="Menu mobile">
+    <a href="../index.html">Home</a>
+    <a href="../chi-siamo.html">Chi Siamo</a>
+    <a href="../servizi.html">Servizi</a>
+    <a href="../estetica.html" class="mobile-nav-estetica">Estetica</a>
+    <a href="../team.html">Team</a>
+    <a href="../tecnologia.html">Tecnologia</a>
+    <a href="index.html">Blog</a>
+    <a href="../contatti.html">Contatti</a>
+    <div class="mobile-nav-cta">
+      <a href="../contatti.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex">Prenota Visita</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="blog-hero" aria-label="Blog hero">
+      <div class="container">
+        <p class="overline" style="color:var(--gold)">Fazzari Cliniche Dentali</p>
+        <h1>Il nostro blog</h1>
+        <p>Consigli pratici, risposte chiare e approfondimenti su salute dentale ed estetica del sorriso.</p>
+      </div>
+    </section>
+
+    <section class="section bg-ivory" aria-label="Articoli del blog">
+      <div class="container">
+
+        <div class="blog-filters" role="group" aria-label="Filtra per categoria">
+          <button class="filter-btn active" data-filter="all">Tutti</button>
+          <button class="filter-btn" data-filter="dentale">Cliniche Dentali</button>
+          <button class="filter-btn filter-estetica" data-filter="estetica">Estetica</button>
+        </div>
+
+        <div class="blog-grid" id="blog-grid">
+
+          <article class="article-card reveal" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1588776814546-1ffbb172caf2?w=600&q=80" alt="Visita di controllo dentale" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Perché fare una visita di controllo ogni 6 mesi salva i denti (e i soldi)</h2>
+              <p class="article-card-excerpt">La prevenzione costa poco e vale tantissimo. Scopri cosa succede se aspetti troppo.</p>
+              <div class="article-card-meta">
+                <span>Marzo 2025</span>
+                <a href="articolo-1.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1629909615657-a4b0d1ba4a31?w=600&q=80" alt="Paura del dentista" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Paura del dentista: come superarla davvero</h2>
+              <p class="article-card-excerpt">La odontofobia è reale e diffusa. Esistono strategie concrete per affrontarla senza soffrire.</p>
+              <div class="article-card-meta">
+                <span>Aprile 2025</span>
+                <a href="articolo-2.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-2" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Implanti dentali" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Implanti o ponti? La differenza che nessuno ti spiega chiaramente</h2>
+              <p class="article-card-excerpt">Due soluzioni per un dente mancante. Quale scegliere, quando, e perché non sono equivalenti.</p>
+              <div class="article-card-meta">
+                <span>Aprile 2025</span>
+                <a href="articolo-3.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80" alt="Devitalizzazione dente" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Quanto dura una devitalizzazione? Tutto quello che devi sapere</h2>
+              <p class="article-card-excerpt">Tempi, dolore, recupero e cosa aspettarsi dopo il trattamento canalare.</p>
+              <div class="article-card-meta">
+                <span>Maggio 2025</span>
+                <a href="articolo-4.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1551601651-09492b5468b6?w=600&q=80" alt="Dentista bambini" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Denti dei bambini: quando portarli dal dentista per la prima volta</h2>
+              <p class="article-card-excerpt">Prima dell'età scolare, o prima ancora? Quello che ogni genitore deve sapere.</p>
+              <div class="article-card-meta">
+                <span>Maggio 2025</span>
+                <a href="articolo-5.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-2" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80" alt="Gengive che sanguinano" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Gengive che sanguinano: non è normale, ecco perché</h2>
+              <p class="article-card-excerpt">Il sangue sullo spazzolino non è un segno di pulizia intensa. È un segnale da non ignorare.</p>
+              <div class="article-card-meta">
+                <span>Giugno 2025</span>
+                <a href="articolo-6.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Ortodonzia adulti" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Ortodonzia da adulti: è davvero possibile e conviene?</h2>
+              <p class="article-card-excerpt">Sempre più trentenni e quarantenni scelgono l'apparecchio. Ecco quando ha senso farlo.</p>
+              <div class="article-card-meta">
+                <span>Giugno 2025</span>
+                <a href="articolo-7.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Igiene professionale dentale" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Igiene professionale: cosa succede davvero durante la seduta</h2>
+              <p class="article-card-excerpt">Non è solo una pulizia. Scopri cosa fa davvero l'igienista e perché non dovresti saltarla.</p>
+              <div class="article-card-meta">
+                <span>Luglio 2025</span>
+                <a href="articolo-8.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-2" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Scegliere il dentista" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Come scegliere un buon dentista (senza farsi ingannare dal prezzo)</h2>
+              <p class="article-card-excerpt">Il dentista più economico non è sempre il migliore. Quali segnali cercare e cosa evitare.</p>
+              <div class="article-card-meta">
+                <span>Luglio 2025</span>
+                <a href="articolo-9.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal" data-cat="dentale">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=600&q=80" alt="Urgenza dentale" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-dentale">Cliniche Dentali</span>
+              <h2 class="article-card-title">Urgenza dentale: cosa fare nelle prime ore</h2>
+              <p class="article-card-excerpt">Dente rotto, ascesso, dolore acuto. Cosa fare (e non fare) prima di arrivare in studio.</p>
+              <div class="article-card-meta">
+                <span>Agosto 2025</span>
+                <a href="articolo-10.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Sbiancamento dentale" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Sbiancamento fai da te vs professionale: i rischi che non conosci</h2>
+              <p class="article-card-excerpt">Kit online, strisce, bicarbonato: cosa funziona, cosa no e cosa può danneggiarti.</p>
+              <div class="article-card-meta">
+                <span>Agosto 2025</span>
+                <a href="articolo-11.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-2" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80" alt="Faccette dentali" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Faccette dentali: per chi sono davvero indicate</h2>
+              <p class="article-card-excerpt">Non sono per tutti. Scopri i casi in cui le faccette hanno senso e quando è meglio evitarle.</p>
+              <div class="article-card-meta">
+                <span>Settembre 2025</span>
+                <a href="articolo-12.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80" alt="Smile design sorriso" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Smile design: come si progetta il sorriso perfetto per il tuo viso</h2>
+              <p class="article-card-excerpt">Non esiste un sorriso perfetto universale. Il progetto inizia dal tuo viso, non da una foto.</p>
+              <div class="article-card-meta">
+                <span>Settembre 2025</span>
+                <a href="articolo-13.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Botox dentale bruxismo" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Botox dentale per il bruxismo: funziona davvero?</h2>
+              <p class="article-card-excerpt">La tossina botulinica come trattamento per il digrignamento notturno. Cosa dice la scienza.</p>
+              <div class="article-card-meta">
+                <span>Ottobre 2025</span>
+                <a href="articolo-14.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-2" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Denti gialli cause soluzioni" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Denti gialli: cause e soluzioni reali (non quelle di Instagram)</h2>
+              <p class="article-card-excerpt">Il caffè, l'età, i farmaci. Quali rimedi funzionano davvero e quali sono solo marketing.</p>
+              <div class="article-card-meta">
+                <span>Ottobre 2025</span>
+                <a href="articolo-15.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1526290766257-c7c6a7105b3b?w=600&q=80" alt="Valorizzare il sorriso" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Come valorizzare il sorriso senza stravolgere il viso</h2>
+              <p class="article-card-excerpt">L'estetica dentale non deve sembrare "fatta". Il segreto è la misura e la naturalezza.</p>
+              <div class="article-card-meta">
+                <span>Novembre 2025</span>
+                <a href="articolo-16.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=600&q=80" alt="Gengivoplastica" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Gengivoplastica: quando è estetica e quando è necessaria</h2>
+              <p class="article-card-excerpt">Le gengive troppo alte o basse non sono solo un problema estetico. Ecco quando intervenire.</p>
+              <div class="article-card-meta">
+                <span>Novembre 2025</span>
+                <a href="articolo-17.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-2" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=600&q=80" alt="Sorriso e psicologia" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Il sorriso cambia la vita: il lato psicologico della cura dentale</h2>
+              <p class="article-card-excerpt">Autostima, relazioni sociali, lavoro. La connessione tra sorriso e benessere psicologico.</p>
+              <div class="article-card-meta">
+                <span>Dicembre 2025</span>
+                <a href="articolo-18.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80" alt="Ricostruzioni estetiche dentali" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Ricostruzioni estetiche: quando i denti rovinati si recuperano</h2>
+              <p class="article-card-excerpt">Scheggiature, usura, fratture. Spesso si recupera tutto. Ecco come e con quali materiali.</p>
+              <div class="article-card-meta">
+                <span>Gennaio 2026</span>
+                <a href="articolo-19.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card reveal reveal-delay-1" data-cat="estetica">
+            <img class="article-card-img" src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=600&q=80" alt="Prima visita estetica dentale" loading="lazy">
+            <div class="article-card-body">
+              <span class="article-badge badge-estetica">Estetica</span>
+              <h2 class="article-card-title">Prima visita estetica: cosa aspettarsi e come prepararsi</h2>
+              <p class="article-card-excerpt">Cosa succede durante la prima consulenza estetica. Domande, analisi, possibilità.</p>
+              <div class="article-card-meta">
+                <span>Febbraio 2026</span>
+                <a href="articolo-20.html" class="article-card-link">Leggi →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="header-logo" style="margin-bottom:1.25rem">
+            <a href="../index.html"><img src="../asset/logo/completo.png" alt="Fazzari Cliniche Dentali" height="40" style="filter:brightness(0) invert(1);opacity:0.88"></a>
+          </div>
+          <p class="footer-tagline">La famiglia che cura le famiglie.</p>
+          <div class="footer-values">
+            <span class="footer-value">🏠 Famiglia</span>
+            <span class="footer-value">🌿 Etica</span>
+            <span class="footer-value">♥ Benessere</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Pagine</h3>
+          <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../chi-siamo.html">Chi Siamo</a>
+            <a href="../servizi.html">Servizi</a>
+            <a href="../team.html">Il Team</a>
+            <a href="../tecnologia.html">Tecnologia</a>
+            <a href="index.html">Blog</a>
+            <a href="../contatti.html">Contatti</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Brand Estetica</h3>
+          <div class="footer-estetica-badge">
+            <p class="footer-estetica-name">Fazzari · Estetica</p>
+            <p class="footer-estetica-sub">Bellezza naturale del sorriso</p>
+            <a href="../estetica.html" class="btn btn-estetica-outline btn-sm" style="margin-top:0.75rem">Scopri</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Contatti</h3>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5a4.5 4.5 0 00-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 008 1.5zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"/></svg>
+            <span>Palermo, PA — Italia</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none"><path d="M3 2.5A1.5 1.5 0 014.5 1h1A1.5 1.5 0 017 2.5v1A1.5 1.5 0 015.5 5h-.25a5.75 5.75 0 004.75 4.75V9.5A1.5 1.5 0 0111.5 8h1A1.5 1.5 0 0114 9.5v1A1.5 1.5 0 0112.5 12C7.253 12 3 7.747 3 2.5z" fill="currentColor"/></svg>
+            <span>Da inserire</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none"><path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4zm2.45.5L8 7.7l3.55-3.2H4.45zm7.05 1.6L8 8.8 4.5 6.1V11h7V6.1z" fill="currentColor"/></svg>
+            <span>Da inserire</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>Lun–Sab: 9:00–19:00</span>
+          </div>
+          <div style="margin-top:0.5rem">
+            <a href="https://www.instagram.com/fazzari.cliniche.dentali" target="_blank" rel="noopener" style="font-size:0.82rem;color:rgba(255,255,255,0.5)">@fazzari.cliniche.dentali</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Fazzari Cliniche Dentali — Palermo. Tutti i diritti riservati.</p>
+        <div class="footer-legal">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../privacy.html#cookie">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.article-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.cat === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
