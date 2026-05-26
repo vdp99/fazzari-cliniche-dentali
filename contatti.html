@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti e Prenotazioni — Fazzari Cliniche Dentali | Palermo</title>
+  <meta name="description" content="Prenota una visita da Fazzari Cliniche Dentali a Palermo. Form di prenotazione online, contatti e orari dello studio.">
+  <link rel="icon" type="image/png" href="asset/logo/icona.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="header-logo">
+        <a href="index.html"><img src="asset/logo/completo.png" alt="Fazzari Cliniche Dentali" height="44"></a>
+      </div>
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a><a href="chi-siamo.html">Chi Siamo</a><a href="servizi.html">Servizi</a>
+        <a href="estetica.html" class="nav-estetica">Estetica</a><a href="team.html">Team</a>
+        <a href="tecnologia.html">Tecnologia</a><a href="contatti.html" class="active">Contatti</a>
+      </nav>
+      <div class="header-cta"><a href="contatti.html" class="btn btn-primary btn-sm">Prenota Visita</a></div>
+      <button class="hamburger" aria-label="Apri menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu-overlay"></div>
+  <nav class="mobile-nav" aria-label="Menu mobile">
+    <a href="index.html">Home</a><a href="chi-siamo.html">Chi Siamo</a><a href="servizi.html">Servizi</a>
+    <a href="estetica.html" class="mobile-nav-estetica">Estetica</a><a href="team.html">Team</a>
+    <a href="tecnologia.html">Tecnologia</a><a href="contatti.html">Contatti</a>
+    <div class="mobile-nav-cta"><a href="contatti.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex">Prenota Visita</a></div>
+  </nav>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero" aria-label="Contatti">
+      <div class="container">
+        <div class="hero-content" style="padding-top:0">
+          <p class="hero-overline">Siamo qui per te</p>
+          <h1 class="hero-title">Prenota<br><em>la tua visita.</em></h1>
+          <p class="hero-subtitle">Un messaggio, una telefonata. Rispondiamo sempre — e prendiamo sul serio ogni richiesta.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form + Info -->
+    <section class="section bg-ivory" id="form-section">
+      <div class="container">
+        <div class="grid-2" style="gap:5rem; align-items:start">
+
+          <!-- Form -->
+          <div class="reveal-left">
+            <p class="overline">Richiesta di appuntamento</p>
+            <h2 class="section-title" style="margin-top:0.5rem; margin-bottom:1.5rem">Scrivici</h2>
+
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="nome">Nome e cognome <span class="required">*</span></label>
+                  <input type="text" id="nome" name="nome" class="form-control" placeholder="Mario Rossi" required>
+                  <span class="form-error" style="display:none"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="telefono">Telefono <span class="required">*</span></label>
+                  <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="+39 091 000 0000" required>
+                  <span class="form-error" style="display:none"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="mario@email.it" required>
+                <span class="form-error" style="display:none"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tipo-visita">Tipo di visita <span class="required">*</span></label>
+                <select id="tipo-visita" name="tipo-visita" class="form-control" required>
+                  <option value="">Seleziona una tipologia</option>
+                  <option value="prima-visita">Prima visita</option>
+                  <option value="controllo">Controllo periodico</option>
+                  <option value="urgenza">Urgenza dentale</option>
+                  <option value="visita-estetica">Consulenza estetica</option>
+                  <option value="implantologia">Implantologia</option>
+                  <option value="ortodonzia">Ortodonzia</option>
+                  <option value="igiene">Igiene professionale</option>
+                  <option value="altro">Altro</option>
+                </select>
+                <span class="form-error" style="display:none"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Brand di riferimento</label>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="brand" value="cliniche-dentali" checked>
+                    <span>Fazzari Cliniche Dentali</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="brand" value="estetica">
+                    <span>Fazzari Estetica</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="messaggio">Note o richieste particolari</label>
+                <textarea id="messaggio" name="messaggio" class="form-control" placeholder="Raccontaci qualcosa di più sulla tua situazione o su cosa ti aspetti dalla visita..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" id="privacy-check" name="privacy" required>
+                  <span>Ho letto e accetto la <a href="privacy.html" target="_blank">Privacy Policy</a> di Fazzari Cliniche Dentali. Acconsento al trattamento dei miei dati personali per la gestione della richiesta. <span class="required">*</span></span>
+                </label>
+                <span class="form-error" style="display:none"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:0.5rem">Invia richiesta</button>
+            </form>
+
+            <!-- Success message -->
+            <div class="form-success" id="form-success">
+              <div class="form-success-icon">✓</div>
+              <h3>Richiesta inviata!</h3>
+              <p>Abbiamo ricevuto la tua richiesta. Ti contatteremo entro 24 ore per confermare l'appuntamento. A presto!</p>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="reveal-right">
+            <p class="overline">Dove siamo</p>
+            <h2 class="section-title" style="margin-top:0.5rem; margin-bottom:1.5rem">Informazioni<br>di contatto</h2>
+
+            <div class="contact-info">
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2a5 5 0 00-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 00-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" fill="currentColor"/></svg>
+                </div>
+                <div class="contact-info-content">
+                  <p class="contact-info-label">Indirizzo</p>
+                  <p class="contact-info-text">Palermo, PA — Italia<br><small style="color:var(--text-mid); font-size:0.8rem">Indirizzo completo da inserire nella Fase 4</small></p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 2A1.5 1.5 0 002 3.5v1A1.5 1.5 0 003.5 6h.25a6.5 6.5 0 005.25 5.25V11A1.5 1.5 0 0010.5 9h1A1.5 1.5 0 0013 10.5v1A1.5 1.5 0 0111.5 13C6.5 13 2 8.5 2 3.5A1.5 1.5 0 013.5 2z" fill="currentColor"/></svg>
+                </div>
+                <div class="contact-info-content">
+                  <p class="contact-info-label">Telefono</p>
+                  <p class="contact-info-text">Da inserire<br><small style="color:var(--text-mid); font-size:0.8rem">Numero da aggiornare nella Fase 4</small></p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5a1 1 0 011-1h12a1 1 0 011 1v9a1 1 0 01-1 1H3a1 1 0 01-1-1V5zm2.45.5L9 8.95l4.55-3.45H4.45zm7.05 1.7L9 9.8 6.5 7.2V13h7V7.2z" fill="currentColor"/></svg>
+                </div>
+                <div class="contact-info-content">
+                  <p class="contact-info-label">Email</p>
+                  <p class="contact-info-text">Da inserire<br><small style="color:var(--text-mid); font-size:0.8rem">Email da aggiornare nella Fase 4</small></p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M9 5v5l3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="contact-info-content">
+                  <p class="contact-info-label">Orari</p>
+                  <p class="contact-info-text">
+                    Lunedì — Venerdì: 9:00 — 19:00<br>
+                    Sabato: 9:00 — 13:00<br>
+                    <small style="color:var(--text-mid); font-size:0.8rem">Da confermare nella Fase 4</small>
+                  </p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.2"/><circle cx="13" cy="5" r="0.75" fill="currentColor"/></svg>
+                </div>
+                <div class="contact-info-content">
+                  <p class="contact-info-label">Instagram</p>
+                  <a href="https://www.instagram.com/fazzari.cliniche.dentali" target="_blank" rel="noopener" class="contact-info-text" style="color:var(--teal-mid)">@fazzari.cliniche.dentali</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="map-placeholder" style="margin-top:2rem">
+              <div style="text-align:center; padding:2rem; color:var(--text-mid)">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="margin:0 auto 1rem; color:var(--teal-dark)"><path d="M20 4a10 10 0 00-10 10c0 9 10 22 10 22s10-13 10-22A10 10 0 0020 4zm0 14a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/></svg>
+                <p style="font-size:0.875rem; margin:0">Mappa Google Maps<br><small>Da integrare nella Fase 4</small></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Note urgenze -->
+    <section class="section bg-beige" aria-label="Urgenze">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="overline">Per le urgenze</p>
+          <h2 class="section-title">Hai un'urgenza dentale?</h2>
+          <p class="section-subtitle">Dolore acuto, dente rotto, ascesso? Contattaci al numero indicato o vieni direttamente in studio. Gestiamo le urgenze con priorità.</p>
+        </div>
+        <div class="text-center" style="margin-top:1.5rem">
+          <a href="tel:+3909100000" class="btn btn-primary btn-lg">Chiama ora</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="header-logo" style="margin-bottom:1.25rem"><a href="index.html"><img src="asset/logo/completo.png" alt="Fazzari" height="40" style="filter:brightness(0) invert(1);opacity:0.88"></a></div><p class="footer-tagline">La famiglia che cura le famiglie.</p><div class="footer-values"><span class="footer-value">🏠 Famiglia</span><span class="footer-value">🌿 Etica</span><span class="footer-value">♥ Benessere</span></div></div>
+        <div><h3 class="footer-col-title">Pagine</h3><div class="footer-links"><a href="index.html">Home</a><a href="chi-siamo.html">Chi Siamo</a><a href="servizi.html">Servizi</a><a href="team.html">Il Team</a><a href="tecnologia.html">Tecnologia</a><a href="contatti.html">Contatti</a></div></div>
+        <div><h3 class="footer-col-title">Brand Estetica</h3><div class="footer-estetica-badge"><p class="footer-estetica-name">Fazzari · Estetica</p><p class="footer-estetica-sub">Bellezza naturale del sorriso</p><a href="estetica.html" class="btn btn-estetica-outline btn-sm" style="margin-top:0.75rem">Scopri</a></div></div>
+        <div><h3 class="footer-col-title">Contatti</h3><div class="footer-contact-item"><svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5a4.5 4.5 0 00-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 008 1.5zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"/></svg><span>Palermo, PA — Italia</span></div><div class="footer-contact-item"><svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Lun–Sab: 9:00–19:00</span></div></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2026 Fazzari Cliniche Dentali — Palermo.</p><div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="privacy.html#cookie">Cookie Policy</a></div></div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookie-banner"><div class="cookie-banner-inner"><p class="cookie-banner-text">Utilizziamo cookie tecnici e, previo consenso, cookie analitici. <a href="privacy.html#cookie">Scopri di più</a></p><div class="cookie-banner-actions"><button class="cookie-btn cookie-btn-accept" id="cookie-accept-all">Accetta tutti</button><button class="cookie-btn cookie-btn-minimal" id="cookie-accept-minimal">Solo necessari</button><button class="cookie-btn cookie-btn-settings" id="cookie-open-settings">Preferenze</button></div></div></div>
+  <div class="cookie-modal" id="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title"><div class="cookie-modal-inner"><h2 class="cookie-modal-title" id="cookie-modal-title">Preferenze Cookie</h2><p class="cookie-modal-text">Gestisci le tue preferenze.</p><div class="cookie-category"><div class="cookie-category-header"><span class="cookie-category-name">Cookie Tecnici</span><label class="toggle"><input type="checkbox" checked disabled><span class="toggle-slider"></span></label></div><p class="cookie-category-desc">Necessari.</p></div><div class="cookie-category"><div class="cookie-category-header"><span class="cookie-category-name">Cookie Analitici</span><label class="toggle"><input type="checkbox" id="toggle-analytics"><span class="toggle-slider"></span></label></div><p class="cookie-category-desc">Ci aiutano a migliorare il sito.</p></div><div class="cookie-modal-actions"><button class="btn btn-outline btn-sm" id="cookie-modal-close">Annulla</button><button class="btn btn-primary btn-sm" id="cookie-modal-save">Salva</button></div></div></div>
+
+  <script src="main.js"></script>
+  <script>
+    // Pre-select estetica radio if URL param present
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('brand') === 'estetica') {
+      const esteticaRadio = document.querySelector('input[name="brand"][value="estetica"]');
+      if (esteticaRadio) esteticaRadio.checked = true;
+      // Pre-select visita estetica
+      const tipoVisita = document.getElementById('tipo-visita');
+      if (tipoVisita) tipoVisita.value = 'visita-estetica';
+    }
+  </script>
+</body>
+</html>

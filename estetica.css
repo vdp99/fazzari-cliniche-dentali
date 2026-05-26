@@ -1,0 +1,199 @@
+/* =====================================================
+   FAZZARI CLINICHE DENTALI · ESTETICA — Palette Override
+   ===================================================== */
+
+/* Override CSS variables for estetica pages */
+body.estetica-page {
+  --primary:     var(--cipria);
+  --primary-mid: #b5796a;
+  --accent:      var(--sage);
+  --accent-light: var(--sage-light);
+  background-color: var(--estetica-bg);
+}
+
+/* Header estetica tint */
+body.estetica-page .site-header.header-scrolled,
+body.estetica-page .site-header.header-solid {
+  background: rgba(251,246,243,0.97);
+}
+
+/* Nav active color override */
+body.estetica-page .main-nav a.active,
+body.estetica-page .main-nav a.active::after {
+  color: var(--cipria);
+  background: var(--cipria);
+}
+body.estetica-page .main-nav a:hover { color: var(--cipria); }
+body.estetica-page .header-transparent .main-nav a:hover { color: var(--cipria-light); }
+
+/* Section titles */
+body.estetica-page .section-title { color: var(--cipria); }
+body.estetica-page .overline { color: var(--cipria); }
+
+/* Hero estetica */
+.hero-estetica .hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(196,137,122,0.72) 0%,
+    rgba(196,137,122,0.45) 50%,
+    rgba(196,137,122,0.25) 100%
+  );
+}
+
+.hero-estetica .hero-overline { color: rgba(255,255,255,0.75); }
+
+/* Page hero estetica */
+.page-hero-estetica {
+  background: var(--cipria);
+}
+.page-hero-estetica::before {
+  content: '\2665';
+  color: rgba(255,255,255,0.04);
+}
+
+/* Estetica gold becomes sage */
+body.estetica-page .divider-gold {
+  border-color: var(--cipria);
+  opacity: 0.25;
+}
+body.estetica-page .separator::before,
+body.estetica-page .separator::after { background: var(--cipria); opacity: 0.3; }
+body.estetica-page .separator-text { color: var(--cipria); }
+
+/* Feature intro block */
+.estetica-intro-block {
+  background: var(--cipria-light);
+  border-radius: var(--radius-lg);
+  padding: 3rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.estetica-intro-block::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -5%;
+  width: 300px; height: 300px;
+  background: var(--cipria);
+  border-radius: 50%;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.estetica-intro-block h2 { color: #7a3d31; }
+.estetica-intro-block p { color: #6b4038; }
+
+/* Sage accent items */
+.sage-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 0.875rem;
+}
+.sage-bullet::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--sage);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.55rem;
+}
+
+/* Footer estetica override */
+body.estetica-page .site-footer { background: #3d2319; }
+
+/* Pull quote estetica */
+body.estetica-page .pull-quote {
+  border-left-color: var(--cipria);
+  color: var(--cipria);
+}
+
+/* Estetica claim block */
+.estetica-claim {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--cipria);
+  color: white;
+  border-radius: var(--radius-lg);
+}
+.estetica-claim .claim-words {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.estetica-claim .claim-sep {
+  width: 4px; height: 4px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Estetica for-whom cards */
+.for-whom-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(196,137,122,0.08);
+  border-top: 2px solid var(--cipria);
+  transition: all var(--transition-mid);
+}
+.for-whom-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(196,137,122,0.14);
+}
+.for-whom-icon { font-size: 1.75rem; margin-bottom: 0.875rem; }
+.for-whom-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--cipria);
+  margin-bottom: 0.6rem;
+}
+
+/* Sage highlight strip */
+.sage-strip {
+  background: var(--sage);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: white;
+}
+.sage-strip-icon { font-size: 1.5rem; flex-shrink: 0; }
+.sage-strip p { color: rgba(255,255,255,0.9); margin-bottom: 0; }
+
+/* Estetica service list (softer) */
+.estetica-service-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.estetica-service-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 8px rgba(196,137,122,0.07);
+  transition: all var(--transition-fast);
+  font-size: 0.9375rem;
+  color: var(--text-dark);
+}
+.estetica-service-list-item:hover {
+  box-shadow: 0 4px 16px rgba(196,137,122,0.12);
+  transform: translateX(4px);
+}
+.estetica-service-list-item::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--cipria);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
