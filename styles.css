@@ -1,4 +1,4 @@
-/* =====================================================
+﻿/* =====================================================
    FAZZARI CLINICHE DENTALI — Global Styles
    ===================================================== */
 
@@ -26,8 +26,8 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
   --sage-light:   #B5CDB7;
   --estetica-bg:  #FBF6F3;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lato', 'Helvetica Neue', sans-serif;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -56,7 +56,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 /* 3. Typography Scale */
 body {
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text-dark);
@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
   color: var(--teal-dark);
 }
-h1 { font-weight: 400; }
+h1 { font-weight: 700; }
 
 h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
@@ -80,7 +80,7 @@ h4 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 .display-text {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.03;
   letter-spacing: -0.02em;
 }
@@ -492,7 +492,7 @@ p:last-child { margin-bottom: 0; }
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(3rem, 7.5vw, 6.5rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.03;
   color: white;
   margin-bottom: 1.5rem;
@@ -757,7 +757,7 @@ p:last-child { margin-bottom: 0; }
 .stat-number {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--teal-dark);
   line-height: 1;
   margin-bottom: 0.5rem;
@@ -1257,7 +1257,7 @@ select.form-control {
 .diff-number {
   font-family: var(--font-display);
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: 400;
   color: rgba(14,74,77,0.12);
   line-height: 1;
   flex-shrink: 0;

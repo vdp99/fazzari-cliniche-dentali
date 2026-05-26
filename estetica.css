@@ -1,4 +1,4 @@
-/* =====================================================
+﻿/* =====================================================
    FAZZARI CLINICHE DENTALI · ESTETICA — Palette Override
    ===================================================== */
 
@@ -121,7 +121,7 @@ body.estetica-page .pull-quote {
 .estetica-claim .claim-words {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 4vw, 3rem);
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   color: white;
   line-height: 1.4;
