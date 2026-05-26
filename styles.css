@@ -56,7 +56,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 /* 3. Typography Scale */
 body {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text-dark);
@@ -66,10 +66,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.15;
   color: var(--teal-dark);
 }
+h1 { font-weight: 400; }
 
 h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
@@ -500,7 +501,7 @@ p:last-child { margin-bottom: 0; }
 .hero-subtitle {
   font-family: var(--font-body);
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.75;
   color: rgba(255,255,255,0.82);
   margin-bottom: 2.5rem;
@@ -862,7 +863,7 @@ p:last-child { margin-bottom: 0; }
   content: '—';
   color: var(--gold);
   flex-shrink: 0;
-  font-weight: 300;
+  font-weight: 400;
 }
 .contrast-col-right .contrast-list li::before { color: var(--gold); }
 
@@ -885,7 +886,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text-dark);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   outline: none;
@@ -1014,7 +1015,7 @@ select.form-control {
   align-items: center;
   gap: 0.35rem;
   font-size: 0.78rem;
-  font-weight: 300;
+  font-weight: 400;
   color: rgba(255,255,255,0.5);
 }
 .footer-col-title {
